@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "function_ContentBasedRouting", "FunctionApps\function_ContentBasedRouting.csproj", "{7517F462-79DB-43A1-B1C7-BB6FA80158D8}"
+EndProject
+Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "ContentBasedRouting", "LogicApp\ContentBasedRouting.deployproj", "{8CE751F9-BB41-4797-9CEE-CA62324DBA19}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7517F462-79DB-43A1-B1C7-BB6FA80158D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7517F462-79DB-43A1-B1C7-BB6FA80158D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7517F462-79DB-43A1-B1C7-BB6FA80158D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7517F462-79DB-43A1-B1C7-BB6FA80158D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE751F9-BB41-4797-9CEE-CA62324DBA19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE751F9-BB41-4797-9CEE-CA62324DBA19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE751F9-BB41-4797-9CEE-CA62324DBA19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE751F9-BB41-4797-9CEE-CA62324DBA19}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D690F15-2077-488F-B808-6147CC897028}
+	EndGlobalSection
+EndGlobal

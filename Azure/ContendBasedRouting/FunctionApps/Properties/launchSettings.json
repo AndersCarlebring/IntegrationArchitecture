@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "ContentBaseRoutingFunctionApp": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7043"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 32291,
+      "useSSL": false
+    }
+  }
+}
