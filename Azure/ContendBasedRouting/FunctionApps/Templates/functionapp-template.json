@@ -1,0 +1,201 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sites_fa_contentbasedrouting_name": {
+      "defaultValue": "fa-contentbasedrouting",
+      "type": "String"
+    },
+    "serverfarms_ASP_rgintegrationarchitecture_8cee_externalid": {
+      "defaultValue": "/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/rg-integration-architecture/providers/Microsoft.Web/serverfarms/ASP-rgintegrationarchitecture-8cee",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-09-01",
+      "name": "[parameters('sites_fa_contentbasedrouting_name')]",
+      "location": "North Europe",
+      "tags": {
+        "hidden-link: /app-insights-resource-id": "/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/rg-integration-architecture/providers/Microsoft.Insights/components/fa-contentbasedrouting"
+      },
+      "kind": "functionapp",
+      "properties": {
+        "enabled": true,
+        "hostNameSslStates": [
+          {
+            "name": "[concat(parameters('sites_fa_contentbasedrouting_name'), '.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Standard"
+          },
+          {
+            "name": "[concat(parameters('sites_fa_contentbasedrouting_name'), '.scm.azurewebsites.net')]",
+            "sslState": "Disabled",
+            "hostType": "Repository"
+          }
+        ],
+        "serverFarmId": "[parameters('serverfarms_ASP_rgintegrationarchitecture_8cee_externalid')]",
+        "reserved": false,
+        "isXenon": false,
+        "hyperV": false,
+        "vnetRouteAllEnabled": false,
+        "vnetImagePullEnabled": false,
+        "vnetContentShareEnabled": false,
+        "siteConfig": {
+          "numberOfWorkers": 1,
+          "acrUseManagedIdentityCreds": false,
+          "alwaysOn": false,
+          "http20Enabled": false,
+          "functionAppScaleLimit": 200,
+          "minimumElasticInstanceCount": 0
+        },
+        "scmSiteAlsoStopped": false,
+        "clientAffinityEnabled": false,
+        "clientCertEnabled": false,
+        "clientCertMode": "Required",
+        "hostNamesDisabled": false,
+        "customDomainVerificationId": "408FFC79A0067B35E8B1116FF25DF47C27584696736718969A5A823C6AC37C0F",
+        "containerSize": 1536,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": true,
+        "redundancyMode": "None",
+        "publicNetworkAccess": "Enabled",
+        "storageAccountRequired": false,
+        "keyVaultReferenceIdentity": "SystemAssigned"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('sites_fa_contentbasedrouting_name'), '/ftp')]",
+      "location": "North Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_fa_contentbasedrouting_name'))]"
+      ],
+      "tags": {
+        "hidden-link: /app-insights-resource-id": "/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/rg-integration-architecture/providers/Microsoft.Insights/components/fa-contentbasedrouting"
+      },
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('sites_fa_contentbasedrouting_name'), '/scm')]",
+      "location": "North Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_fa_contentbasedrouting_name'))]"
+      ],
+      "tags": {
+        "hidden-link: /app-insights-resource-id": "/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/rg-integration-architecture/providers/Microsoft.Insights/components/fa-contentbasedrouting"
+      },
+      "properties": {
+        "allow": true
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('sites_fa_contentbasedrouting_name'), '/web')]",
+      "location": "North Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_fa_contentbasedrouting_name'))]"
+      ],
+      "tags": {
+        "hidden-link: /app-insights-resource-id": "/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/rg-integration-architecture/providers/Microsoft.Insights/components/fa-contentbasedrouting"
+      },
+      "properties": {
+        "numberOfWorkers": 1,
+        "defaultDocuments": [
+          "Default.htm",
+          "Default.html",
+          "Default.asp",
+          "index.htm",
+          "index.html",
+          "iisstart.htm",
+          "default.aspx",
+          "index.php"
+        ],
+        "netFrameworkVersion": "v6.0",
+        "requestTracingEnabled": false,
+        "remoteDebuggingEnabled": false,
+        "httpLoggingEnabled": false,
+        "acrUseManagedIdentityCreds": false,
+        "logsDirectorySizeLimit": 35,
+        "detailedErrorLoggingEnabled": false,
+        "publishingUsername": "$fa-contentbasedrouting",
+        "scmType": "None",
+        "use32BitWorkerProcess": true,
+        "webSocketsEnabled": false,
+        "alwaysOn": false,
+        "managedPipelineMode": "Integrated",
+        "virtualApplications": [
+          {
+            "virtualPath": "/",
+            "physicalPath": "site\\wwwroot",
+            "preloadEnabled": false
+          }
+        ],
+        "loadBalancing": "LeastRequests",
+        "experiments": {
+          "rampUpRules": []
+        },
+        "autoHealEnabled": false,
+        "vnetRouteAllEnabled": false,
+        "vnetPrivatePortsCount": 0,
+        "publicNetworkAccess": "Enabled",
+        "cors": {
+          "allowedOrigins": [
+            "https://portal.azure.com"
+          ],
+          "supportCredentials": false
+        },
+        "localMySqlEnabled": false,
+        "ipSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictions": [
+          {
+            "ipAddress": "Any",
+            "action": "Allow",
+            "priority": 2147483647,
+            "name": "Allow all",
+            "description": "Allow all access"
+          }
+        ],
+        "scmIpSecurityRestrictionsUseMain": false,
+        "http20Enabled": false,
+        "minTlsVersion": "1.2",
+        "scmMinTlsVersion": "1.2",
+        "ftpsState": "FtpsOnly",
+        "preWarmedInstanceCount": 0,
+        "functionAppScaleLimit": 200,
+        "functionsRuntimeScaleMonitoringEnabled": false,
+        "minimumElasticInstanceCount": 0,
+        "azureStorageAccounts": {}
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/hostNameBindings",
+      "apiVersion": "2022-09-01",
+      "name": "[concat(parameters('sites_fa_contentbasedrouting_name'), '/', parameters('sites_fa_contentbasedrouting_name'), '.azurewebsites.net')]",
+      "location": "North Europe",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('sites_fa_contentbasedrouting_name'))]"
+      ],
+      "properties": {
+        "siteName": "fa-contentbasedrouting",
+        "hostNameType": "Verified"
+      }
+    }
+  ]
+}

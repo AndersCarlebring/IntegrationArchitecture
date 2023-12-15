@@ -10,3 +10,6 @@
 *.bin
 /.vs
 *.dockerignore
+/Azure/ContendBasedRouting/FunctionApps/Properties
+/Azure/ContendBasedRouting/LogicApp/bin/Debug/staging/ContentBasedRouting
+/Azure/ContendBasedRouting/LogicApp/obj/Debug

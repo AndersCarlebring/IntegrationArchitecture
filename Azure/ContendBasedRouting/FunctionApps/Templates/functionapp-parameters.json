@@ -1,0 +1,14 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sites_fa_contentbasedrouting_name": {
+      "type": "String",
+      "value": "fa-contentbasedrouting"
+    },
+    "serverfarms_ASP_rgintegrationarchitecture_8cee_externalid": {
+      "type": "string",
+      "value": "/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/rg-integration-architecture/providers/Microsoft.Web/serverfarms/ASP-rgintegrationarchitecture-8cee"
+    }
+  }
+}
