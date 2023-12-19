@@ -201,3 +201,21 @@ resource sites_FunctionApp231214_name_sites_FunctionApp231214_name_azurewebsites
     hostNameType: 'Verified'
   }
 }
+
+param workspaces_DefaultWorkspace_412ed95a_04ce_4866_aed3_4665fa772e8d_NEU_externalid string = '/subscriptions/412ed95a-04ce-4866-aed3-4665fa772e8d/resourceGroups/DefaultResourceGroup-NEU/providers/Microsoft.OperationalInsights/workspaces/DefaultWorkspace-412ed95a-04ce-4866-aed3-4665fa772e8d-NEU'
+
+resource App_Insights 'Microsoft.Insights/components@2020-02-02' ={
+  name:functionAppName
+  location: location
+  kind: 'web'
+  properties:{
+    Flow_Type:'Redfield'
+    Application_Type:'web'
+    Request_Source:'IbizaAIExtensionEnablementBlade'
+    RetentionInDays: 90
+    WorkspaceResourceId: workspaces_DefaultWorkspace_412ed95a_04ce_4866_aed3_4665fa772e8d_NEU_externalid
+    IngestionMode: 'LogAnalytics'
+    publicNetworkAccessForIngestion: 'Enabled'
+    publicNetworkAccessForQuery: 'Enabled'
+  }
+}

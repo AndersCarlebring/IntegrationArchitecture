@@ -21,9 +21,10 @@ namespace ContentBaseRoutingFunctionApp
         }
 
         [FunctionName("GetContentBaseRoutingValue")]
-        public async Task<String> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req)
+        public async Task<String> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger logger)
         {
             _logger.LogInformation("C# HTTP trigger function GetContentBaseRoutingValue processed a request.");
+            logger.LogInformation("Logger test");
 
             try
             {
